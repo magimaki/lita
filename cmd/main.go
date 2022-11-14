@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "lita/cli"
 
+func main() {
+	cli.Execute()
 }
