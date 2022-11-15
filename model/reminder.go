@@ -23,6 +23,9 @@ type Reminder struct {
 
 	Event   string `json:"event"`
 	Address string `json:"address"`
+
+	// OnlyDateEvent is an event without specific starting hour and minute.
+	OnlyDateEvent bool `json:"only_date_event"`
 }
 
 func StrToTime(timeStr string) (*time.Time, error) {
