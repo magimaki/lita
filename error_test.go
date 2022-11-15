@@ -1,4 +1,4 @@
-package error
+package lita
 
 import (
 	"errors"
@@ -22,7 +22,7 @@ func TestLitaError_Message(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			e := &LitaError{
+			e := &Error{
 				code:    tt.fields.code,
 				message: tt.fields.message,
 				err:     tt.fields.err,
