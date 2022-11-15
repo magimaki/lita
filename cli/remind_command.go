@@ -19,6 +19,7 @@ var (
 var remindCmd = &cobra.Command{
 	Use:   "remind",
 	Short: "Set event reminder",
+	Long:  "Set event reminder.",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(remindCmdFlagDate) != 8 {
 			fmt.Println(lita.NewError(lita.ErrCmdInput, "invalid event date format, need `yyyymmdd`", nil))
