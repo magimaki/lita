@@ -72,11 +72,11 @@ func init() {
 	remindCmd.Flags().StringVarP(&remindCmdFlagDate,
 		"date", "d", "", "event date: yyyymmdd")
 	remindCmd.Flags().StringVarP(&remindCmdFlagTime,
-		"time", "t", "", "event time: hhmm")
+		"time", "t", "", "optional event time: hhmm, default 08:00")
 	remindCmd.Flags().StringVarP(&remindCmdFlagEvent,
-		"event", "e", "", "Source directory to read from")
+		"event", "e", "", "event content")
 	remindCmd.Flags().StringVarP(&remindCmdFlagAddress,
-		"address", "a", "", "Source directory to read from")
+		"address", "a", "", "optional event address")
 
 	if err := remindCmd.MarkFlagRequired("date"); err != nil {
 		fmt.Println(err)
