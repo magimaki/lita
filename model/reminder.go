@@ -16,7 +16,9 @@ type Reminder struct {
 	Minute  string `json:"minute"`
 	Weekday string `json:"weekday"`
 
-	// Time is a time.Time object contains Year, Month, Day, Hour, Minute
+	// TimeStr has format like `2006-01-02 15:04`.
+	TimeStr string `json:"time_str"`
+	// Time is a time.Time object contains Year, Month, Day, Hour, Minute.
 	Time time.Time `json:"time"`
 
 	Event   string `json:"event"`
