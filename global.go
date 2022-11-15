@@ -1,5 +1,5 @@
 package lita
 
 var (
-	Lita = "lita"
+	Name = "lita"
 )

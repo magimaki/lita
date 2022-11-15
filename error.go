@@ -34,9 +34,9 @@ func (e *Error) Message() interface{} {
 
 func (e *Error) Error() string {
 	if e.err == nil {
-		return fmt.Sprintf("[%s] %s: %s", strings.ToUpper(Lita), e.code, e.message)
+		return fmt.Sprintf("[%s] %s: %s", strings.ToUpper(Name), e.code, e.message)
 	}
-	return fmt.Sprintf("[%s] %s: %s: %s", strings.ToUpper(Lita), e.code, e.message, e.err.Error())
+	return fmt.Sprintf("[%s] %s: %s: %s", strings.ToUpper(Name), e.code, e.message, e.err.Error())
 }
 
 func (e *Error) MarshalJSON() ([]byte, error) {
