@@ -1,6 +1,8 @@
 package main
 
-import "lita/cli"
+import (
+	"lita/cli"
+)
 
 func main() {
 	cli.Execute()
