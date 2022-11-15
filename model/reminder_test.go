@@ -64,6 +64,27 @@ func TestStrToTime(t *testing.T) {
 			wantErr: true,
 		},
 		{
+			name: "test_hour_minute_60",
+			args: args{
+				timeStr: "3997-12-09 23:60",
+			},
+			wantErr: true,
+		},
+		{
+			name: "test_february_29_correct",
+			args: args{
+				timeStr: "2016-02-29 23:03",
+			},
+			wantErr: false,
+		},
+		{
+			name: "test_february_29_wrong",
+			args: args{
+				timeStr: "2015-02-29 23:03",
+			},
+			wantErr: true,
+		},
+		{
 			name: "test_letter",
 			args: args{
 				timeStr: "1997-12-0x 09:07",
