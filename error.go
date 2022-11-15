@@ -8,6 +8,7 @@ import (
 
 const (
 	ErrCmdInput = "error command input"
+	ErrServing  = "error serving"
 )
 
 type Error struct {
