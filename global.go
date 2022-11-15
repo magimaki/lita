@@ -2,5 +2,5 @@ package lita
 
 var (
 	Name = "lita"
-	Port = 9933
+	Port = "9933"
 )
