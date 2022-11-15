@@ -28,10 +28,10 @@ type Reminder struct {
 	OnlyDateEvent bool `json:"only_date_event"`
 }
 
-func StrToTime(timeStr string) (*time.Time, error) {
+func StrToTime(timeStr string) (time.Time, error) {
 	timeObj, err := time.Parse(TimeTemplate, timeStr)
 	if err != nil {
-		return nil, err
+		return time.Time{}, err
 	}
-	return &timeObj, err
+	return timeObj, err
 }
