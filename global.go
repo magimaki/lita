@@ -1,6 +1,6 @@
 package lita
 
-var (
+const (
 	Name = "lita"
 	Port = "9933"
 )

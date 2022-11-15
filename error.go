@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var (
+const (
 	ErrCmdInput = "error command input"
 )
 
