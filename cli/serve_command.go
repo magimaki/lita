@@ -3,7 +3,9 @@ package cli
 import (
 	"fmt"
 	"lita"
-	"os"
+	"lita/endpoint"
+	"lita/service"
+	"lita/transport"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
@@ -38,9 +40,15 @@ func serve(optionalPort ...string) {
 		port = optionalPort[0]
 	}
 
-	// uncomment below when release
+	// uncomment below in production environment
 	// gin.SetMode(gin.ReleaseMode)
 	server := gin.Default()
+
+	baseService := service.NewBaseService()
+	{
+		group := server.Group("")
+		transport.NewBaseHTTPHandler(endpoint.NewBaseEndpoint(baseService), group)
+	}
 
 	if err = server.Run(fmt.Sprintf(":%s", port)); err != nil {
 		return
