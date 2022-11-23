@@ -3,7 +3,6 @@ package lita
 import (
 	"errors"
 	"fmt"
-	"reflect"
 	"testing"
 )
 
@@ -16,9 +15,19 @@ func TestLitaError_Message(t *testing.T) {
 	tests := []struct {
 		name   string
 		fields fields
-		want   interface{}
 	}{
-		// TODO: Add test cases.
+		{
+			name: "test1",
+			fields: fields{
+				message: map[string]string{"err": "1"},
+			},
+		},
+		{
+			name: "test1",
+			fields: fields{
+				message: []string{"1"},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -27,9 +36,7 @@ func TestLitaError_Message(t *testing.T) {
 				message: tt.fields.message,
 				err:     tt.fields.err,
 			}
-			if got := e.Message(); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Message() = %v, want %v", got, tt.want)
-			}
+			fmt.Println(e.Message())
 		})
 	}
 }
