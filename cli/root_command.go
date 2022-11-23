@@ -29,3 +29,11 @@ func init() {
 	rootCmd.AddCommand(remindCmd)
 	rootCmd.AddCommand(serveCmd)
 }
+
+func isValidCmdDateLength(date string) bool {
+	return len(date) == 8
+}
+
+func isValidCmdTimeLength(time string) bool {
+	return len(time) == 4 || len(time) == 0
+}

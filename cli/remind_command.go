@@ -21,22 +21,20 @@ var remindCmd = &cobra.Command{
 	Short: "Set event reminder",
 	Long:  "Set event reminder.",
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(remindCmdFlagDate) != 8 {
+		if !isValidCmdDateLength(remindCmdFlagDate) {
 			fmt.Println(lita.NewError(lita.ErrCmdInput, "invalid event date format, need `yyyymmdd`", nil))
 			os.Exit(1)
 		}
 
-		if len(remindCmdFlagTime) != 4 && len(remindCmdFlagTime) != 0 {
-			fmt.Println(remindCmdFlagTime)
-			fmt.Println(len(remindCmdFlagTime))
+		if !isValidCmdTimeLength(remindCmdFlagTime) {
 			fmt.Println(lita.NewError(lita.ErrCmdInput, "invalid event time format, need `hhmm`", nil))
 			os.Exit(1)
 		}
 
-		var onlyDateEvent bool
+		var onlyDateReminder bool
 		if len(remindCmdFlagTime) == 0 {
 			remindCmdFlagTime = "0800"
-			onlyDateEvent = true
+			onlyDateReminder = true
 		}
 
 		year := remindCmdFlagDate[0:4]
@@ -53,17 +51,19 @@ var remindCmd = &cobra.Command{
 			os.Exit(1)
 		}
 		reminder := model.Reminder{
-			Year:          year,
-			Month:         month,
-			Day:           day,
-			Hour:          hour,
-			Minute:        minute,
-			Weekday:       timeObj.Weekday().String(),
-			TimeStr:       timeStr,
-			Time:          timeObj,
-			Event:         remindCmdFlagEvent,
-			Address:       remindCmdFlagAddress,
-			OnlyDateEvent: onlyDateEvent,
+			Evt: model.Event{
+				Year:    year,
+				Month:   month,
+				Day:     day,
+				Hour:    hour,
+				Minute:  minute,
+				Weekday: timeObj.Weekday().String(),
+				TimeStr: timeStr,
+				Time:    timeObj,
+				Content: remindCmdFlagEvent,
+				Address: remindCmdFlagAddress,
+			},
+			OnlyDateReminder: onlyDateReminder,
 		}
 		fmt.Println(reminder)
 	},
