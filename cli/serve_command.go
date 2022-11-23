@@ -25,12 +25,6 @@ var serveCmd = &cobra.Command{
 func init() {
 	serveCmd.Flags().StringVarP(&serverPort, "port", "p", lita.Port,
 		fmt.Sprintf("optional %s server port, default %s", lita.Name, lita.Port))
-
-	if err := serveCmd.MarkFlagRequired("port"); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-
 }
 
 func serve(optionalPort ...string) {
